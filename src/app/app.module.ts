@@ -10,13 +10,15 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { JwtInterceptor } from './auth/jwt.interceptor';
 import { ErrorInterceptor } from './auth/error.interceptor';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     WelcomeComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
