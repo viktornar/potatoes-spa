@@ -15,7 +15,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) {
     this.currentUserSubject = 
       new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    //this.currentUser = this.currentUserSubject.asObservable();
+    // this.currentUser = this.currentUserSubject.asObservable();
   }
 
   public get currentUserValue(): User {
@@ -23,8 +23,9 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
+
     return this.http.post<User>(
-      `http://localhost:4200/api/authenticate`,
+      `${environment.apiUrl}/authenticate`,
       { username, password }
     )
       .pipe(map(user => {
@@ -32,7 +33,6 @@ export class AuthenticationService {
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
-        console.log(`${user.username} ${user.token}`);
         return user;
       }));
   }

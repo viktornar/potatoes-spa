@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../auth/authentication.service';
 
 @Component({
@@ -40,5 +41,15 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     this.authenticationService.login(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+          this.loading = false;
+        },
+        error => {
+          this.error = error;
+          this.loading = false;
+        });
   }
 }
