@@ -72,7 +72,8 @@
             "production": {
               "browserTarget": "potatoes-spa:build:production"
             }
-          }
+          },
+          "proxyConfig": "src/proxy.conf.json"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "potatoes-spa"
+    }
+  },
+  "defaultProject": "potatoes-spa",
+  "cli": {
+    "analytics": false
+  }
 }
